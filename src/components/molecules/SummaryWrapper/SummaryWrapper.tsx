@@ -110,7 +110,7 @@ const SummaryWrapper = ({
           <StatisticCard
             key={index}
             title={item.title}
-            value={item.value}
+            value={item.value || 0}
             color={item.color}
             currency={item.currency}
             icon={item.icon}
