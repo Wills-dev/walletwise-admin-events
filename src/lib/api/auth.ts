@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axiosInstance } from "../axiosInstance";
 
 export const login = async ({
   email,
@@ -8,7 +8,10 @@ export const login = async ({
   password: string;
 }) => {
   try {
-    const { data } = await axios.post(``, { email, password });
+    const { data } = await axiosInstance.post(`/partner/login`, {
+      email,
+      password,
+    });
     return data;
   } catch (error) {
     throw error;

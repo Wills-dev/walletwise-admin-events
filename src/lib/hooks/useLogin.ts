@@ -7,6 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { login } from "../api/auth";
 import { ApiErrorResponse } from "../types";
 import { promiseErrorFunction } from "../helpers/promiseError";
+import { createAuthCookie } from "../helpers/cookie";
 
 export const useLogin = () => {
   const router = useRouter();
@@ -33,6 +34,7 @@ export const useLogin = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
+      createAuthCookie("partnerToken", data?.data?.token);
       resetForm();
       toast.success("Login successful");
       router.push("/overview");

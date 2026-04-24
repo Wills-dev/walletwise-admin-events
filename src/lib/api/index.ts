@@ -1,43 +1,40 @@
-import axios from "axios";
+import { axiosInstance } from "../axiosInstance";
 
-export const getTicket = async ({
-  fullName,
-  email,
-  phoneNumber,
-  quantity,
+export const getTickets = async ({
+  currentPage,
+  limit,
+  search,
   ticketType,
 }: {
-  fullName: string;
-  email: string;
-  phoneNumber: string;
-  quantity: number;
-  ticketType: string;
+  currentPage: number;
+  limit: number;
+  status?: string;
+  search: string | null;
+  ticketType?: string;
 }) => {
   try {
     // const baseUrl = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
-    const payload = { fullName, email, phoneNumber, quantity, ticketType };
-    const url = `https://walletwise.ng/api/v1/events/book`;
-    const { data } = await axios.post(url, payload);
+    const params = new URLSearchParams();
+
+    params.set("page", currentPage.toString());
+    params.set("limit", limit.toString());
+
+    if (search) params.set("search", search);
+    if (ticketType) params.set("ticketType", ticketType);
+
+    const url = `/analytics/top-users?${params.toString()}`;
+    const { data } = await axiosInstance.get(url);
     return data;
   } catch (error) {
     throw error;
   }
 };
 
-export const getBredTicket = async ({
-  fullName,
-  email,
-  phoneNumber,
-}: {
-  fullName: string;
-  email: string;
-  phoneNumber: string;
-}) => {
+export const getTicketSummary = async () => {
   try {
-    const payload = { fullName, email, phoneNumber };
-    const url = `https://walletwise.ng/api/bred/register`;
-    const { data } = await axios.post(url, payload);
-    return data;
+    const url = `/partner/registrations/summary`;
+    const { data } = await axiosInstance.get(url);
+    return data?.data;
   } catch (error) {
     throw error;
   }
