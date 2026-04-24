@@ -110,7 +110,7 @@ const PaginationComponent = ({
               />
             </svg>
           </Button>
-          <p className="h-8 max-w-16 text-center border border-gray-300 dark:border-gray-600">
+          <p className="h-8 px-4 rounded flex justify-center items-center text-center border border-gray-300 dark:border-gray-600">
             {currentPage}
           </p>
           <Button

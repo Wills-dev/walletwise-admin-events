@@ -1,29 +1,29 @@
 import SummaryCardLoader from "@/components/atoms/skeleton/SummaryCardLoader";
 import StatisticCard from "@/components/atoms/StatisticCard/StatisticCard";
 
-import {
-  Wallet,
-  Percent,
-  Users,
-  ArrowLeftRight,
-  CheckCircle,
-} from "lucide-react";
+import { Wallet, Ticket, Crown, User, Users } from "lucide-react";
 
 const SummaryWrapper = ({
   loading,
   totalRevenue,
-  totalCommission,
-  totalUserCommission,
-  totalTransactions,
-  success,
+  totalTickets,
+  vipSold,
+  regularSold,
+  table6,
+  table8,
+  table10,
   onClick,
+  seatTable,
 }: {
   loading: boolean;
   totalRevenue: number;
-  totalCommission: number;
-  totalUserCommission: number;
-  totalTransactions: number;
-  success: number;
+  totalTickets: number;
+  vipSold: number;
+  regularSold: number;
+  table6: number;
+  table8: number;
+  table10: number;
+  seatTable: number;
   onClick: (type: string) => void;
 }) => {
   const summaryData: {
@@ -33,6 +33,7 @@ const SummaryWrapper = ({
     currency?: string;
     icon: React.ReactElement;
     type: string;
+    onClick?: () => void;
   }[] = [
     {
       title: "Total Revenue",
@@ -40,37 +41,63 @@ const SummaryWrapper = ({
       color: "orange",
       currency: "₦",
       icon: <Wallet className="w-6 h-6" />,
-      type: "",
+      type: "revenue",
     },
     {
-      title: "Total Commission",
-      value: totalCommission,
+      title: "Total Tickets",
+      value: totalTickets,
       color: "blue",
-      currency: "₦",
-      icon: <Percent className="w-6 h-6" />,
-      type: "",
+      icon: <Ticket className="w-6 h-6" />,
+      type: "tickets",
+      onClick: () => onClick(""),
     },
     {
-      title: "Total User Commission",
-      value: totalUserCommission,
+      title: "VIP Sold",
+      value: vipSold,
       color: "purple",
-      currency: "₦",
+      icon: <Crown className="w-6 h-6" />,
+      type: "vip",
+      onClick: () => onClick("VIP"),
+    },
+    {
+      title: "Regular Sold",
+      value: regularSold,
+      color: "green",
+      icon: <User className="w-6 h-6" />,
+      type: "regular",
+      onClick: () => onClick("REGULAR"),
+    },
+    {
+      title: "Seat Table",
+      value: seatTable,
+      color: "green",
       icon: <Users className="w-6 h-6" />,
-      type: "",
+      type: "table6",
+      onClick: () => onClick("SEAT_TABLE"),
     },
     {
-      title: "Total Transaction",
-      value: totalTransactions,
-      color: "green",
-      icon: <ArrowLeftRight className="w-6 h-6" />,
-      type: "",
+      title: "Table (6)",
+      value: table6,
+      color: "yellow",
+      icon: <Users className="w-6 h-6" />,
+      type: "table6",
+      onClick: () => onClick("TABLE_6"),
     },
     {
-      title: "Success",
-      value: success,
-      color: "green",
-      icon: <CheckCircle className="w-6 h-6" />,
-      type: "success",
+      title: "Table (8)",
+      value: table8,
+      color: "orange",
+      icon: <Users className="w-6 h-6" />,
+      type: "table8",
+      onClick: () => onClick("TABLE_8"),
+    },
+    {
+      title: "Table (10)",
+      value: table10,
+      color: "red",
+      icon: <Users className="w-6 h-6" />,
+      type: "table10",
+      onClick: () => onClick("TABLE_10"),
     },
   ];
 

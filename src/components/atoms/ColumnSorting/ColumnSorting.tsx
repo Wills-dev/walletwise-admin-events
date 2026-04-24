@@ -15,12 +15,15 @@ const ColumnSorting = <TData,>({ table }: ColumnSortingProps<TData>) => {
   return (
     <div className="max-sm:hidden flex items-center gap-6">
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <button className="text-gray-800 dark:text-gray-500 text-sm">
+        <DropdownMenuTrigger>
+          <span className="text-gray-800 dark:text-gray-500 text-sm">
             Columns
-          </button>
+          </span>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="bg-white">
+        <DropdownMenuContent
+          align="end"
+          className="bg-black/50 backdrop-blur-sm border-gray-700 text-white/80"
+        >
           {table
             ?.getAllColumns()
             ?.filter((column) => column?.getCanHide())

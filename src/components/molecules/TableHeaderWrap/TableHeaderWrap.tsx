@@ -13,15 +13,12 @@ const TableHeaderWrap = ({ table }: TableHeaderProps) => {
         <TableRow key={headerGroup.id}>
           {headerGroup?.headers?.map((header) => {
             return (
-              <TableHead
-                key={header?.id}
-                className="bg-gray-200 dark:bg-gray-950"
-              >
+              <TableHead key={header?.id} className="bg-black/40 text-white/60">
                 {header?.isPlaceholder
                   ? null
                   : flexRender(
                       header?.column?.columnDef.header,
-                      header?.getContext()
+                      header?.getContext(),
                     )}
               </TableHead>
             );

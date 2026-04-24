@@ -28,7 +28,6 @@ const OverviewWrapper = () => {
     handleSearchChange,
     handleClear,
     handleSearch,
-    ticketType,
     setTicketType,
     setCurrentPage,
   } = useGetSoldTickets();
@@ -39,17 +38,34 @@ const OverviewWrapper = () => {
     <div className="min-h-screen relative overflow-hidden bg-[linear-gradient(180deg,#615853_0%,#6B615A_21.74%,#857772_37.98%,#7E706B_75%,#1E1C18_100%)]">
       <Container>
         <div className="py-16 space-y-8">
-          <div className=""></div>
+          <div className="">
+            <h1 className="text-3xl font-bold text-white/80 font-cinzel">
+              Overview
+            </h1>
+            <p className="sm:text-lg text-sm text-white/60 mt-2 max-w-2xl w-full font-cinzel_decorative">
+              Get insights into your event's performance with our comprehensive
+              overview dashboard. Track ticket sales, revenue, and attendee
+              demographics in real-time, all in one place.
+            </p>
+          </div>
           <div className="">
             <SummaryWrapper
               loading={isFetching}
-              totalRevenue={data?.total_tickets_sold}
+              totalRevenue={data?.total_revenue}
+              totalTickets={data?.total_tickets_sold}
+              vipSold={data?.total_revenue?.VIP?.count}
+              regularSold={data?.total_revenue?.REGULAR?.count}
+              table6={data?.total_revenue?.TABLE_6?.count}
+              table8={data?.total_revenue?.TABLE_8?.count}
+              table10={data?.total_revenue?.TABLE_10?.count}
+              seatTable={data?.total_revenue?.SEAT_TABLE?.count}
+              onClick={setTicketType}
             />
           </div>
           <TableWrapper
             columns={typedColumns}
-            data={data || []}
-            totalPages={data?.totalPages}
+            data={data?.registrations || []}
+            totalPages={data?.pagination?.totalPages}
             currentPage={currentPage}
             prevPage={prevPage}
             nextPage={nextPage}
