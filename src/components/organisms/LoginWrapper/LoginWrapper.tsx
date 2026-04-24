@@ -5,14 +5,7 @@ import { useLogin } from "@/lib/hooks/useLogin";
 import { Loader } from "lucide-react";
 
 const LoginWrapper = () => {
-  const {
-    loginInfo,
-    handleChange,
-    handleSubmit,
-    inputType,
-    handleInputTypeChange,
-    isPending,
-  } = useLogin();
+  const { loginInfo, handleChange, handleSubmit, isPending } = useLogin();
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
