@@ -1,9 +1,6 @@
 "use client";
 
-import Image from "next/image";
-
 interface InputProps {
-  icon?: string;
   type: string;
   name: string;
   value: string | number;
@@ -16,7 +13,6 @@ const Input = ({
   onChange,
   value,
   type,
-  icon,
   name,
 }: InputProps) => {
   return (

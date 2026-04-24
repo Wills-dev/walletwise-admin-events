@@ -29,6 +29,7 @@ export function middleware(request: NextRequest) {
         return response;
       }
     } catch (error) {
+      console.log("error", error);
       const response = NextResponse.redirect(new URL("/login", request.url));
       response.cookies.delete("partnerToken");
       return response;

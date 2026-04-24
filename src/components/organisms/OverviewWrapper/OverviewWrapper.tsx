@@ -43,22 +43,22 @@ const OverviewWrapper = () => {
               Overview
             </h1>
             <p className="sm:text-lg text-sm text-white/60 mt-2 max-w-2xl w-full font-cinzel_decorative">
-              Get insights into your event's performance with our comprehensive
-              overview dashboard. Track ticket sales, revenue, and attendee
-              demographics in real-time, all in one place.
+              Get insights into your event&apos;s performance with our
+              comprehensive overview dashboard. Track ticket sales, revenue, and
+              attendee demographics in real-time, all in one place.
             </p>
           </div>
           <div className="">
             <SummaryWrapper
               loading={isFetching}
-              totalRevenue={data?.total_revenue}
-              totalTickets={data?.total_tickets_sold}
-              vipSold={data?.total_revenue?.VIP?.count}
-              regularSold={data?.total_revenue?.REGULAR?.count}
-              table6={data?.total_revenue?.TABLE_6?.count}
-              table8={data?.total_revenue?.TABLE_8?.count}
-              table10={data?.total_revenue?.TABLE_10?.count}
-              seatTable={data?.total_revenue?.SEAT_TABLE?.count}
+              totalRevenue={summary?.total_revenue}
+              totalTickets={summary?.total_tickets_sold}
+              vipSold={summary?.total_revenue?.VIP?.count}
+              regularSold={summary?.total_revenue?.REGULAR?.count}
+              table6={summary?.total_revenue?.TABLE_6?.count}
+              table8={summary?.total_revenue?.TABLE_8?.count}
+              table10={summary?.total_revenue?.TABLE_10?.count}
+              seatTable={summary?.total_revenue?.SEAT_TABLE?.count}
               onClick={setTicketType}
             />
           </div>
