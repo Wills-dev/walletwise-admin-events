@@ -88,7 +88,7 @@ const TableWrapper = ({
       ) : (
         <>
           <div className="shadow">
-            <Table className="dark:bg-gray-800 no-scrollbar">
+            <Table className=" no-scrollbar">
               <TableHeaderWrap table={table} />
               <TableBodyWrap table={table} columns={columns} />
             </Table>

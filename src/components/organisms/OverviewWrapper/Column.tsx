@@ -1,16 +1,12 @@
 import { ArrowUpDown } from "lucide-react";
-import { CellContext, createColumnHelper, Table } from "@tanstack/react-table";
+import { CellContext, createColumnHelper } from "@tanstack/react-table";
 
 import { Button } from "@/components/ui/button";
 
 import { Transaction } from "@/lib/types";
-import { formatDate } from "@/lib/helpers";
+import { formatDate, numberWithCommas } from "@/lib/helpers";
 
 const columnHelper = createColumnHelper<Transaction>();
-
-interface ColumnProps<TData = unknown> {
-  table: Table<TData>;
-}
 
 export const Column = [
   columnHelper.accessor("created_at", {
@@ -26,9 +22,9 @@ export const Column = [
       );
     },
     cell: ({ row }) => {
-      const date: string = row.getValue("date");
+      const date: string = row.getValue("created_at");
       const formatted = date ? formatDate(date) : "";
-      return <div className="">{formatted}</div>;
+      return <div className=" whitespace-nowrap">{formatted}</div>;
     },
   }),
   columnHelper.accessor("full_name", {
@@ -72,7 +68,7 @@ export const Column = [
       const phoneNumber = getValue();
       return (
         <div>
-          <span className="font-medium">{phoneNumber}</span>
+          <span className="">{phoneNumber}</span>
         </div>
       );
     },
@@ -137,7 +133,9 @@ export const Column = [
       const amount = getValue();
       return (
         <div>
-          <span className="text-gray-500 ml-1">₦{amount.toLocaleString()}</span>
+          <span className="">
+            ₦{amount && numberWithCommas(Number(amount))}
+          </span>
         </div>
       );
     },

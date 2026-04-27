@@ -17,3 +17,12 @@ export const login = async ({
     throw error;
   }
 };
+
+export const logout = async () => {
+  try {
+    const { data } = await axiosInstance.post(`/partner/logout`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
