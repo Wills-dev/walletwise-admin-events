@@ -16,9 +16,7 @@ const ColumnSorting = <TData,>({ table }: ColumnSortingProps<TData>) => {
     <div className="max-sm:hidden flex items-center gap-6">
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <span className="text-gray-800 dark:text-gray-500 text-sm">
-            Columns
-          </span>
+          <span className="text-white/80 text-sm">Columns</span>
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="end"

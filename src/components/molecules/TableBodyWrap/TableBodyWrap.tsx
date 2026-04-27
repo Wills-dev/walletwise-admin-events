@@ -38,12 +38,16 @@ const TableBodyWrap = ({ table, columns }: TableBodyWrapProps) => {
           <TableRow
             key={row?.id}
             data-state={row.getIsSelected() && "selected"}
-            className={row.getIsSelected() ? "bg-black/20" : ""}
+            className={
+              row.getIsSelected()
+                ? "bg-black/20"
+                : "bg-black/40 hover:bg-black/20"
+            }
           >
             {row?.getVisibleCells().map((cell) => (
               <TableCell
                 key={cell.id}
-                className="max-w-lg whitespace-normal text-black/60"
+                className="max-w-lg whitespace-normal text-white/70"
               >
                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
               </TableCell>
