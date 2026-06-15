@@ -65,12 +65,12 @@ const OverviewWrapper = () => {
               loading={isFetching}
               totalRevenue={summary?.total_revenue}
               totalTickets={summary?.total_tickets_sold}
-              vipSold={summary?.total_revenue?.VIP?.count}
-              regularSold={summary?.total_revenue?.REGULAR?.count}
-              table6={summary?.total_revenue?.TABLE_6?.count}
-              table8={summary?.total_revenue?.TABLE_8?.count}
-              table10={summary?.total_revenue?.TABLE_10?.count}
-              seatTable={summary?.total_revenue?.SEAT_TABLE?.count}
+              vipSold={summary?.breakdown_by_ticket_type?.VIP?.count}
+              regularSold={summary?.breakdown_by_ticket_type?.REGULAR?.count}
+              table6={summary?.breakdown_by_ticket_type?.TABLE_6?.count}
+              table8={summary?.breakdown_by_ticket_type?.TABLE_8?.count}
+              table10={summary?.breakdown_by_ticket_type?.TABLE_10?.count}
+              seatTable={summary?.breakdown_by_ticket_type?.SEAT_TABLE?.count}
               onClick={setTicketType}
             />
           </div>
